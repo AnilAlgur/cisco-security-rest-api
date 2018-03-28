@@ -6,6 +6,9 @@ logger = logging.getLogger(__name__)
 
 
 class RestJSONHandler(RestDataHandler):
+    """
+	Handle data exchange between REST server and REST client that is represented in JSON format.
+	"""
     def __init__(self, *args, **kwargs):
         super(RestJSONHandler, self).__init__(*args, **kwargs)
 

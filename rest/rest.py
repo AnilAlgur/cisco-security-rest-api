@@ -9,6 +9,9 @@ class RestClientError(Exception):
 
 
 class RestDataHandler(object):
+    """
+	Abstract class for working with different data representations such as JSON or XML.
+	"""
     def __init__(self, *args, **kwargs):
         self.hdrs_auth = {}
         self.hdrs_req = {}
@@ -19,6 +22,17 @@ class RestDataHandler(object):
 
 
 class AppClient(object):
+    """
+	Abstract class for working with different applications. This must be sub-classed to create application specific
+	client and these variables must be overriden:
+	
+	`AUTH_URL`: Suffix of URL that must be appended to server FQDN in order to invoke REST API authentication.
+	`LOGOUT_URL`: Suffix of URL that must be appended to server FQDN in order to logout from REST API server.
+	`AUTH_HTTP_STATUS`: HTTP status returned after successful authentication, e.g. it could be 200 or 201
+	`AUTH_REQ_HDR_FIELD`: Header field received in the authentication response that'll provide token or cookie that 
+	must be used in subsequent requests to the REST server.
+	`AUTH_HDR_FIELD`: Header field to be used in all the requests to the REST server after authentication is completed.
+	"""
     AUTH_URL = 'App/Must/Override'
     LOGOUT_URL = 'App/Must/Override'
     AUTH_HTTP_STATUS = 200
@@ -108,8 +122,8 @@ class RestClient(AppClient, RestDataHandler):
         :param path: Path to append to URI
         :param method: REST API method, can be any of
             'GET','POST','PUT','DELETE'
-        :param data: JSON request content
-        :return: JSON response from FMC server as dict()
+        :param data: Request data
+        :return: Response from REST server
         """
         if url is None:
             raise RestClientError("REST URL needs to be specified")
@@ -126,7 +140,7 @@ class RestClient(AppClient, RestDataHandler):
         r = None
         try:
             logger.debug("Requesting {} for {}".format(method, url))
-            req = requests.Request(method, url, data=req_data, headers=self.hdrs_req)
+            req = requests.Request(method, url, data=req_data, headers=self.hdrs_req, params=kwargs.get('params'))
             prep_req = self.session.prepare_request(req)
             r = self.session.send(prep_req, verify=False)
             if r.status_code not in [200, 201, 202, 204]:
@@ -155,5 +169,8 @@ class RestClient(AppClient, RestDataHandler):
             self.logout()
 
     def handle_response(self, resp):
+        """
+        Parse the response data. This is overridden by DataHandler class for content-type specific functions.
+        """
         obj = super(RestClient, self).handle_response(resp)
         return obj

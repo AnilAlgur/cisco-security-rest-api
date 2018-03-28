@@ -8,6 +8,11 @@ logger = logging.getLogger(__name__)
 
 
 class RestXMLHandler(RestDataHandler):
+    """
+	Handle data exchange between REST server and REST client that is represented in XML format. `lxml` is required.
+	
+	`OrderedDict` is used as it allows ordered list of attribute value pairs.
+	"""
     def __init__(self, *args, **kwargs):
         super(RestXMLHandler, self).__init__(*args, **kwargs)
 
@@ -55,9 +60,17 @@ class RestXMLHandler(RestDataHandler):
         else:  # This is required for ISE
             self.hdrs_req['Content-Type'] = kwargs.get('http_content')
 
+        if kwargs.get('http_search') is not None:  # This is required for ISE
+            self.hdrs_req['Accept-Search-Result'] = kwargs.get('http_search')
+
     def _handle_http_err(self, err):
         logging.error(
             "HTTP error {} received from server.".format(err))
+        if len(err.response.text) > 0:
+            etree_resp = re.sub(r""" encoding=["|'][u|U][t|T][f|F]-8["|']""", '', err.response.text)
+            XML_err = etree.fromstring(etree_resp)
+            logger.error("XML Error")
+            logger.error(etree.tostring(XML_err, pretty_print=True))
 
     def _add_elem(self, xml_data, key, value):
         elem = etree.Element(key)
