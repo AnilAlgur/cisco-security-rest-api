@@ -30,10 +30,14 @@ Abstract class for working with different applications. This must be sub-classed
 client and these variables must be overriden:
 
 `AUTH_URL`: Suffix of URL that must be appended to server FQDN in order to invoke REST API authentication.
+    
 `LOGOUT_URL`: Suffix of URL that must be appended to server FQDN in order to logout from REST API server.
+    
 `AUTH_HTTP_STATUS`: HTTP status returned after successful authentication, e.g. it could be 200 or 201
+    
 `AUTH_REQ_HDR_FIELD`: Header field received in the authentication response that'll provide token or cookie that 
 must be used in subsequent requests to the REST server.
+    
 `AUTH_HDR_FIELD`: Header field to be used in all the requests to the REST server after authentication is completed.
 
 
