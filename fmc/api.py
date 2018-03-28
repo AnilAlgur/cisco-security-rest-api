@@ -280,10 +280,10 @@ class FPResourceTable(object):
 
 class FPObjectTable(FPResourceTable):
     """
-    Extends FPResourceTable for Policy Object related functionality. `FPObjectTable` allows `FMC` class to stay in sync
-    with policy objects available in FMC. This helps with input data validation before it is sent to FMC server. FMC
-    has its own input data validation mechanisms but customers prefer to send only necessary REST API requests to FMC
-    and encounter as few errors as possible.
+    Extends `FPResourceTable` for Policy Object related functionality. `FPObjectTable` allows `FMC` class to stay in
+    sync with policy objects available in FMC. This helps with input data validation before it is sent to FMC server.
+    FMC has its own input data validation mechanisms but customers prefer to send only necessary REST API requests to
+    FMC and encounter as few errors as possible.
 
     In case of policy objects that allow for nested inheritance, such as network objects, table is built in child first
     order. This is achieved by using `OrderedDict` in `FPResourceTable`. This is very useful in data migration and
