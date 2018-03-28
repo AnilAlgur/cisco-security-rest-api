@@ -57,12 +57,6 @@ class RestClient(AppClient, RestDataHandler):
     """
     Generic REST client that can be extended to interact with any application supporting any data representation
     format. Appropriate `AppClient` and `RestDataHandler` must be provided for this to work correctly.
-
-    Initialize `RestClient` with URL, `username` and `password` parameters.
-
-    :param url: URL of the REST API server
-    :param username: Login username for REST API server
-    :param password: Login password for REST API server
 	"""
     def __init__(self, url=None, username=None, password=None):
         """
