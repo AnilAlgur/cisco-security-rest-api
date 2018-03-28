@@ -10,7 +10,10 @@ class RestClientError(Exception):
 
 class RestDataHandler(object):
     """
-    Abstract class for working with different data representations such as JSON or XML.
+    Abstract class for working with different data representations such as JSON or XML. Data handler classes for JSON
+    and XML are already part of this repository. Other data handler may as well be created if required. If application
+    requires more specific data handling beyond what JSON and XML data handlers provide, they can be extended as well
+    for use with specific `RestClient` extension.
     """
     def __init__(self, *args, **kwargs):
         self.hdrs_auth = {}
@@ -27,15 +30,20 @@ class AppClient(object):
     client and these variables must be overriden:
     
     `AUTH_URL`: Suffix of URL that must be appended to server FQDN in order to invoke REST API authentication.
-	
+
     `LOGOUT_URL`: Suffix of URL that must be appended to server FQDN in order to logout from REST API server.
-	
+
     `AUTH_HTTP_STATUS`: HTTP status returned after successful authentication, e.g. it could be 200 or 201
-	
+
     `AUTH_REQ_HDR_FIELD`: Header field received in the authentication response that'll provide token or cookie that 
     must be used in subsequent requests to the REST server.
-	
+
     `AUTH_HDR_FIELD`: Header field to be used in all the requests to the REST server after authentication is completed.
+
+    If required, other methods such as `login`, `logout` may also be overridden.
+
+    Check the application clients available in this repository to learn more about how `AppClient` can be extended for
+    use with specific applications.
     """
     AUTH_URL = 'App/Must/Override'
     LOGOUT_URL = 'App/Must/Override'
@@ -57,7 +65,11 @@ class RestClient(AppClient, RestDataHandler):
     """
     Generic REST client that can be extended to interact with any application supporting any data representation
     format. Appropriate `AppClient` and `RestDataHandler` must be provided for this to work correctly.
-	"""
+
+    `RestClient` is designed to allow application specific extensions to focus more on application use-cases, be better
+    readable and abstract out underlying REST specific function as much as possible.
+    """
+
     def __init__(self, url=None, username=None, password=None):
         """
         Initialize `RestClient` with `URL`, `username` and `password` parameters.

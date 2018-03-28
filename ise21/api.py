@@ -52,7 +52,6 @@ class ISEClient(AppClient):
         
 
 class ISERestClient(RestClient, ISEClient, RestXMLHandler):
-# class ISERestClient(RestClient, ISEClient, RestPyxbHandler):
     """
     Method Resolution Order:
     ISERestClient
@@ -86,30 +85,12 @@ class ISE(ISERestClient):
                              params={'filter': filter, 'page': str(page)})
         logger.debug("Get-All {} page {}".format(resource, page))
         return XML_resp
-        # for rsrc in XML_resp.iter('{ers.ise.cisco.com}resource'):
-        #     logger.info(rsrc.attrib['name'] + ' --> ' + rsrc.attrib['id'])
-
-
-    def endpoint_complex_search(self):
-        resource = 'endpoint'
-        page = 1
-        dev_url = self.url + '/ers/config/' + resource # + filter + '&page=' + page
-        # dev_url = dev_url + '?'
-        # dev_url = dev_url + '&filter=groupId.EQ.a4a97d40-b4cb-11e5-8ffd-005056903ad0'
-        dev_url = dev_url + '?filter=mac.STARTSW.00'
-        dev_url = dev_url + '&filter=groupId.EQ.c5b18110-8a75-11e6-b4fd-005056926a52'
-        dev_url = dev_url + '&filtertype=OR'
-        XML_resp = self._req(dev_url,
-                             http_accept=self.HDR_RESOURCE[resource],
-                             http_search=self.HDR_SEARCH_RESULT)
-        logger.debug("Get-All {} page {}".format(resource, page))
-        return XML_resp
 
     def getAllSearchResults(self, resource, filter=None):
         page = 1
         XML_resp = self.search_helper(resource, filter, page)
         if len(XML_resp):
-            yield XML_resp  # Blacnk string when request fails
+            yield XML_resp  # Blank string when request fails
         while len(XML_resp) and XML_resp.find("{v2.ers.ise.cisco.com}nextPage") is not None:
             page = page + 1
             XML_resp = self.search_helper(resource, filter, page)

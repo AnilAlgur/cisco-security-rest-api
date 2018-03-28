@@ -13,6 +13,9 @@ class FMCError(Exception):
 
 
 class FMCClient(AppClient):
+    """
+    AppClient extension for FMC.
+    """
     def __init__(self, *args, **kwargs):
         self.AUTH_HTTP_STATUS = 204
         self.AUTH_REQ_HDR_FIELD = 'X-auth-access-token'
@@ -57,6 +60,8 @@ class FMCClient(AppClient):
 
 class FMCRestClient(RestClient, FMCClient, RestJSONHandler):
     """
+    RestClient extension for FMC with FMCClient adn RestJSONHandler.
+
     Method Resolution Order:
     FMCRestClient
     RestClient
@@ -70,6 +75,10 @@ class FMCRestClient(RestClient, FMCClient, RestJSONHandler):
 
 
 class FMC(FMCRestClient):
+    """
+    This class must be used to interact with FMC. Other classes are available within same module to interact with FMC
+    resources such as Policy Objects, Devices, Access Policies.
+    """
     __v1_domain__ = '/api/fmc_config/v1/domain/default/'
     RESOURCE_TYPES = [
         'object', 'devices', 'devicegroups', 'policy',
@@ -122,12 +131,12 @@ class FMC(FMCRestClient):
 
     def __init__(self, url=None, username=None, password=None):
         """
-        Initialize FMC object with URL. `username` and `password` 
-        parameters are optional. If omitted, `login` method can be used.
-        
+        Initialize `FMC` object with server `URL`, `username` and `password` parameters.
+
         :param url: URL of the FMC server
-        :param username: FMC username
-        :param password: FMC password
+        :param username: Login username for FMC server. Ensure that appropriate user role and permissions are assigned
+        to perform all the intended tasks.
+        :param password: Login password for FMC server.
         """
         super(FMC, self).__init__(url=url, username=username, password=password)
         self.server_version = ''
@@ -138,8 +147,7 @@ class FMC(FMCRestClient):
 
     def _req_json(self, resource, type, oid=None, url=None, data=None):
         """
-        Simple wrapper for _req with more options to make it resource
-        agnostic and reusable in different classes
+        Simple wrapper for _req with more options to make it resource agnostic and reusable in different classes
         """
         if oid:                         # Fetch the resource using instance ID
             url = self.url + self.API_PATH[resource] + type + '/' + oid
@@ -183,8 +191,7 @@ class FMC(FMCRestClient):
 
     def get_all_resource_instances(self, resource, type):
         """
-        Abstract generator function for iterating over instances of FMC
-        resource types.
+        Abstract generator function for iterating over instances of FMC resource types.
         """
         if resource not in self.RESOURCE_TYPES:
             raise FMCError("{} is not a valid resource!".format(resource))
@@ -214,9 +221,11 @@ class FMC(FMCRestClient):
 class FPResourceTable(object):
     def __init__(self, fmc, resource, type):
         """
-        Abstract class for table of instances of FMC resource types.
-        It can be inherited to make it specialized for specific 
-        resources, such as 'object', 'policy, 'devices, etc.
+        Abstract class for table of instances of FMC resource types. It can be extended to make it specialized for
+        specific resources, such as 'object', 'policy, 'devices, etc.
+
+        `OrderedDict` is used so that child first order can be maintained for policy objects that allow for nested
+        inheritance.
         """
         if resource not in fmc.RESOURCE_TYPES:
             raise FMCError("Resource type {} is not valid!".format(type))
@@ -271,7 +280,14 @@ class FPResourceTable(object):
 
 class FPObjectTable(FPResourceTable):
     """
-    Generic Object related class and methods
+    Extends FPResourceTable for Policy Object related functionality. `FPObjectTable` allows `FMC` class to stay in sync
+    with policy objects available in FMC. This helps with input data validation before it is sent to FMC server. FMC
+    has its own input data validation mechanisms but customers prefer to send only necessary REST API requests to FMC
+    and encounter as few errors as possible.
+
+    In case of policy objects that allow for nested inheritance, such as network objects, table is built in child first
+    order. This is achieved by using `OrderedDict` in `FPResourceTable`. This is very useful in data migration and
+    cleanup especially between multiple FMCs and while executing test cases.
     """
     def __init__(self, fmc, type):
         """
@@ -414,7 +430,8 @@ class FPResource(object):
 
 class FPObject(FPResource):
     """
-    Generic Object related class and methods.
+    Extends generic `FPResource` for Policy Object related methods. This class allows for extensive and flexible ways to
+    perform CRUD operations on the policy objects and object inheritance as well.
     """
     def __init__(
             self, fmc, type=None, oid=None, name=None,
@@ -715,11 +732,17 @@ class FPObject(FPResource):
 
 # Generic Object related class and methods
 class FPPolicyTable(FPResourceTable):
+    """
+    Work In Progress
+    """
     def __init__(self, fmc, type):
         super(self.__class__, self).__init__(fmc, 'policy', type)
 
 
 class FPAccessRulesTable(FPResourceTable):
+    """
+    Work In Progress
+    """
     def __init__(self, fmc, uuid):
         self.access_policy_uuid = uuid
         resource_type = 'policy/' + self.access_policy_uuid + '/accessrules'
@@ -727,6 +750,9 @@ class FPAccessRulesTable(FPResourceTable):
 
 
 class FPAccessPolicy(object):
+    """
+    Work In Progress
+    """
     def __init__(self, fmc, data=None, json=None, uuid=None, url=None, obj=None):
         """
         FMC Access Policy object
@@ -814,11 +840,17 @@ class FPAccessPolicy(object):
 
 
 class FPDeviceTable(FPResourceTable):
+    """
+    Work In Progress
+    """
     def __init__(self, fmc, type):
         super(self.__class__, self).__init__(fmc, 'devices', type)
 
 
 class FPDeviceGroupTable(FPResourceTable):
+    """
+    Work In Progress
+    """
     def __init__(self, fmc, type):
         super(self.__class__, self).__init__(fmc, 'devicegrouprecords', type)
 
