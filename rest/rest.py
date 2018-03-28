@@ -54,10 +54,19 @@ class AppClient(object):
 
 
 class RestClient(AppClient, RestDataHandler):
+    """
+    Generic REST client that can be extended to interact with any application supporting any data representation
+    format. Appropriate `AppClient` and `RestDataHandler` must be provided for this to work correctly.
+
+    Initialize `RestClient` with URL, `username` and `password` parameters.
+
+    :param url: URL of the REST API server
+    :param username: Login username for REST API server
+    :param password: Login password for REST API server
+	"""
     def __init__(self, url=None, username=None, password=None):
         """
-        Initialize REST API object with URL. `username` and `password`
-        parameters are optional. If omitted, `login` method can be used.
+        Initialize `RestClient` with `URL`, `username` and `password` parameters.
 
         :param url: URL of the REST API server
         :param username: Login username for REST API server
@@ -78,10 +87,8 @@ class RestClient(AppClient, RestDataHandler):
 
     def login(self, method='POST'):
         """
-        The login method authenticates a REST client attempting to
-        access the services provided by the REST server. This method
-        must be called prior to any other method called on other
-        services.
+        The login method authenticates a REST client attempting to access the services provided by the REST server. 
+        This method must be called prior to any other method called on other services.
         """
         self.login_data = ""
         super(RestClient, self).login()
@@ -107,9 +114,8 @@ class RestClient(AppClient, RestDataHandler):
 
     def logout(self):
         """
-        The logout method notifies the FMC server that a previously
-        authenticated FMC client is no longer requiring session access
-        to the server.
+        The logout method notifies the REST server that a previously authenticated REST client is no longer requiring 
+        session access to the server.
         """
         self.logout_data = 'LOGOUT'
         super(RestClient, self).logout()
@@ -120,8 +126,8 @@ class RestClient(AppClient, RestDataHandler):
 
     def _req(self, url, method='GET', data=None, **kwargs):
         """
-        RestClient Internal function. Submit request towards RSET API server,
-        checks return status and parses return content.
+        RestClient Internal function. Submit request towards RSET API server, checks return status and parses return
+        content.
 
         :param path: Path to append to URI
         :param method: REST API method, can be any of
