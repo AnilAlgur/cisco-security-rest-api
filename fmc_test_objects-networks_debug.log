@@ -1,0 +1,1281 @@
+C:\Python27\python.exe C:/Users/502339781/PycharmProjects/cisco-security-rest-api/fmc_test_objects-networks.py apiuser XXXXXXXX https://fmc.example.com
+[03/28/2018 10:18:40 PM-DEBUG]: https://fmc.example.com/api/fmc_platform/v1/auth/generatetoken
+[03/28/2018 10:18:40 PM-DEBUG]: Starting new HTTPS connection (1): fmc.example.com
+[03/28/2018 10:18:44 PM-DEBUG]: https://fmc.example.com:443 "POST /api/fmc_platform/v1/auth/generatetoken HTTP/1.1" 204 0
+[03/28/2018 10:18:44 PM-INFO]: https://fmc.example.com: Login Successful!
+[03/28/2018 10:18:44 PM-DEBUG]: REST API Server Auth token: d0ef5241-6d34-44c5-8c1a-6e71ca9ba976
+[03/28/2018 10:18:44 PM-DEBUG]: GET data: None
+[03/28/2018 10:18:44 PM-DEBUG]: Requesting GET for https://fmc.example.com/api/fmc_platform/v1/info/serverversion
+[03/28/2018 10:18:45 PM-DEBUG]: https://fmc.example.com:443 "GET /api/fmc_platform/v1/info/serverversion HTTP/1.1" 200 257
+[03/28/2018 10:18:45 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:45 PM-DEBUG]: {
+    "items": [
+        {
+            "geoVersion": "None",
+            "serverVersion": "6.2.0.2 (build 51)",
+            "sruVersion": "2016-03-28-001-vrt",
+            "type": "ServerVersion",
+            "vdbVersion": "build 287 ( 2017-08-10 14:35:37 )"
+        }
+    ],
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_platform/v1/info/serverversion?offset=0&limit=1"
+    },
+    "paging": {
+        "count": 1,
+        "limit": 1,
+        "offset": 0,
+        "pages": 1
+    }
+}
+[03/28/2018 10:18:45 PM-INFO]: FMC https://fmc.example.com Version is 6.2.0.2 (build 51)
+[03/28/2018 10:18:45 PM-INFO]: Building Objects Table for hosts objects
+[03/28/2018 10:18:45 PM-DEBUG]: GET data: None
+[03/28/2018 10:18:45 PM-DEBUG]: Requesting GET for https://fmc.example.com/api/fmc_config/v1/domain/default/object/hosts?expanded=true
+[03/28/2018 10:18:45 PM-DEBUG]: https://fmc.example.com:443 "GET /api/fmc_config/v1/domain/default/object/hosts?expanded=true HTTP/1.1" 200 434
+[03/28/2018 10:18:45 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:45 PM-DEBUG]: {
+    "items": [
+        {
+            "description": " ",
+            "id": "dde11d62-288b-4b4c-92e0-1dad0496f14b",
+            "links": {
+                "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+                "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/hosts/dde11d62-288b-4b4c-92e0-1dad0496f14b"
+            },
+            "metadata": {
+                "domain": {
+                    "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+                    "name": "Global"
+                },
+                "ipType": "V_6",
+                "lastUser": {
+                    "name": "apiuser"
+                },
+                "parentType": "NetworkAddress",
+                "readOnly": {
+                    "reason": "SYSTEM",
+                    "state": true
+                },
+                "timestamp": 1484674980213
+            },
+            "name": "any-ipv6",
+            "overridable": false,
+            "type": "Host",
+            "value": "::/0"
+        }
+    ],
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/hosts?offset=0&limit=1&expanded=true"
+    },
+    "paging": {
+        "count": 1,
+        "limit": 1,
+        "offset": 0,
+        "pages": 1
+    }
+}
+[03/28/2018 10:18:45 PM-DEBUG]: OrderedDict([(u'any-ipv6', u'dde11d62-288b-4b4c-92e0-1dad0496f14b')])
+[03/28/2018 10:18:45 PM-INFO]: Building Objects Table for networks objects
+[03/28/2018 10:18:45 PM-DEBUG]: GET data: None
+[03/28/2018 10:18:45 PM-DEBUG]: Requesting GET for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks?expanded=true
+[03/28/2018 10:18:45 PM-DEBUG]: https://fmc.example.com:443 "GET /api/fmc_config/v1/domain/default/object/networks?expanded=true HTTP/1.1" 200 1062
+[03/28/2018 10:18:45 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:45 PM-DEBUG]: {
+    "items": [
+        {
+            "description": " ",
+            "id": "69fa2a3a-4487-4e3c-816f-4098f684826e",
+            "links": {
+                "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+                "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/69fa2a3a-4487-4e3c-816f-4098f684826e"
+            },
+            "metadata": {
+                "domain": {
+                    "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+                    "name": "Global"
+                },
+                "ipType": "V_4",
+                "lastUser": {
+                    "name": "apiuser"
+                },
+                "parentType": "NetworkAddress",
+                "readOnly": {
+                    "reason": "SYSTEM",
+                    "state": true
+                },
+                "timestamp": 1484674980213
+            },
+            "name": "any",
+            "overridable": false,
+            "type": "Network"
+        },
+        {
+            "description": " ",
+            "id": "cb7116e8-66a6-480b-8f9b-295191a0940a",
+            "links": {
+                "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+                "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/cb7116e8-66a6-480b-8f9b-295191a0940a"
+            },
+            "metadata": {
+                "domain": {
+                    "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+                    "name": "Global"
+                },
+                "ipType": "V_4",
+                "lastUser": {
+                    "name": "apiuser"
+                },
+                "parentType": "NetworkAddress",
+                "readOnly": {
+                    "reason": "SYSTEM",
+                    "state": true
+                },
+                "timestamp": 1484674980213
+            },
+            "name": "any-ipv4",
+            "overridable": false,
+            "type": "Network",
+            "value": "0.0.0.0/0"
+        },
+        {
+            "description": " ",
+            "id": "86caab8a-9bdd-420d-858b-5690fde8ce58",
+            "links": {
+                "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+                "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/86caab8a-9bdd-420d-858b-5690fde8ce58"
+            },
+            "metadata": {
+                "domain": {
+                    "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+                    "name": "Global"
+                },
+                "ipType": "V_4",
+                "lastUser": {
+                    "name": "apiuser"
+                },
+                "parentType": "NetworkAddress",
+                "readOnly": {
+                    "reason": "SYSTEM",
+                    "state": true
+                },
+                "timestamp": 1484674980213
+            },
+            "name": "IPv4-Benchmark-Tests",
+            "overridable": false,
+            "type": "Network",
+            "value": "198.18.0.0/15"
+        },
+        {
+            "description": " ",
+            "id": "f0ce41ae-6ee9-4e00-8762-da9370c4fee5",
+            "links": {
+                "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+                "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/f0ce41ae-6ee9-4e00-8762-da9370c4fee5"
+            },
+            "metadata": {
+                "domain": {
+                    "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+                    "name": "Global"
+                },
+                "ipType": "V_4",
+                "lastUser": {
+                    "name": "apiuser"
+                },
+                "parentType": "NetworkAddress",
+                "readOnly": {
+                    "reason": "SYSTEM",
+                    "state": true
+                },
+                "timestamp": 1484674980213
+            },
+            "name": "IPv4-Link-Local",
+            "overridable": false,
+            "type": "Network",
+            "value": "169.254.0.0/16"
+        },
+        {
+            "description": " ",
+            "id": "5622db1c-5cd5-4199-a4c8-d8f86dec3bd4",
+            "links": {
+                "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+                "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/5622db1c-5cd5-4199-a4c8-d8f86dec3bd4"
+            },
+            "metadata": {
+                "domain": {
+                    "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+                    "name": "Global"
+                },
+                "ipType": "V_4",
+                "lastUser": {
+                    "name": "apiuser"
+                },
+                "parentType": "NetworkAddress",
+                "readOnly": {
+                    "reason": "SYSTEM",
+                    "state": true
+                },
+                "timestamp": 1484674980213
+            },
+            "name": "IPv4-Multicast",
+            "overridable": false,
+            "type": "Network",
+            "value": "224.0.0.0/4"
+        },
+        {
+            "description": " ",
+            "id": "95916354-5aa1-4057-8eea-b42a5a207abc",
+            "links": {
+                "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+                "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/95916354-5aa1-4057-8eea-b42a5a207abc"
+            },
+            "metadata": {
+                "domain": {
+                    "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+                    "name": "Global"
+                },
+                "ipType": "V_4",
+                "lastUser": {
+                    "name": "apiuser"
+                },
+                "parentType": "NetworkAddress",
+                "readOnly": {
+                    "reason": "SYSTEM",
+                    "state": true
+                },
+                "timestamp": 1484674980213
+            },
+            "name": "IPv4-Private-10.0.0.0-8",
+            "overridable": false,
+            "type": "Network",
+            "value": "10.0.0.0/8"
+        },
+        {
+            "description": " ",
+            "id": "b7a78a7d-20c5-47b2-b02f-86b4360112ac",
+            "links": {
+                "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+                "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/b7a78a7d-20c5-47b2-b02f-86b4360112ac"
+            },
+            "metadata": {
+                "domain": {
+                    "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+                    "name": "Global"
+                },
+                "ipType": "V_4",
+                "lastUser": {
+                    "name": "apiuser"
+                },
+                "parentType": "NetworkAddress",
+                "readOnly": {
+                    "reason": "SYSTEM",
+                    "state": true
+                },
+                "timestamp": 1484674980213
+            },
+            "name": "IPv4-Private-172.16.0.0-12",
+            "overridable": false,
+            "type": "Network",
+            "value": "172.16.0.0/12"
+        },
+        {
+            "description": " ",
+            "id": "1dcefdd8-07f7-438a-9221-97d63710614e",
+            "links": {
+                "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+                "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/1dcefdd8-07f7-438a-9221-97d63710614e"
+            },
+            "metadata": {
+                "domain": {
+                    "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+                    "name": "Global"
+                },
+                "ipType": "V_4",
+                "lastUser": {
+                    "name": "apiuser"
+                },
+                "parentType": "NetworkAddress",
+                "readOnly": {
+                    "reason": "SYSTEM",
+                    "state": true
+                },
+                "timestamp": 1484674980213
+            },
+            "name": "IPv4-Private-192.168.0.0-16",
+            "overridable": false,
+            "type": "Network",
+            "value": "192.168.0.0/16"
+        },
+        {
+            "description": " ",
+            "id": "1047b91f-db3a-45b8-9c10-f48ed3f0c3d6",
+            "links": {
+                "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+                "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/1047b91f-db3a-45b8-9c10-f48ed3f0c3d6"
+            },
+            "metadata": {
+                "domain": {
+                    "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+                    "name": "Global"
+                },
+                "ipType": "V_6",
+                "lastUser": {
+                    "name": "apiuser"
+                },
+                "parentType": "NetworkAddress",
+                "readOnly": {
+                    "reason": "SYSTEM",
+                    "state": true
+                },
+                "timestamp": 1484674980213
+            },
+            "name": "IPv6-IPv4-Mapped",
+            "overridable": false,
+            "type": "Network",
+            "value": "::ffff:0.0.0.0/96"
+        },
+        {
+            "description": " ",
+            "id": "192c14f2-39d9-409d-81e9-357793bdf1ec",
+            "links": {
+                "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+                "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/192c14f2-39d9-409d-81e9-357793bdf1ec"
+            },
+            "metadata": {
+                "domain": {
+                    "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+                    "name": "Global"
+                },
+                "ipType": "V_6",
+                "lastUser": {
+                    "name": "apiuser"
+                },
+                "parentType": "NetworkAddress",
+                "readOnly": {
+                    "reason": "SYSTEM",
+                    "state": true
+                },
+                "timestamp": 1484674980213
+            },
+            "name": "IPv6-Link-Local",
+            "overridable": false,
+            "type": "Network",
+            "value": "fe80::/10"
+        },
+        {
+            "description": " ",
+            "id": "0434674f-87f8-4e17-810e-97100407858b",
+            "links": {
+                "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+                "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/0434674f-87f8-4e17-810e-97100407858b"
+            },
+            "metadata": {
+                "domain": {
+                    "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+                    "name": "Global"
+                },
+                "ipType": "V_6",
+                "lastUser": {
+                    "name": "apiuser"
+                },
+                "parentType": "NetworkAddress",
+                "readOnly": {
+                    "reason": "SYSTEM",
+                    "state": true
+                },
+                "timestamp": 1484674980213
+            },
+            "name": "IPv6-Private-Unique-Local-Addresses",
+            "overridable": false,
+            "type": "Network",
+            "value": "fc00::/7"
+        },
+        {
+            "description": " ",
+            "id": "04ea3f1f-f5a9-4eca-b051-487ebeb4c97f",
+            "links": {
+                "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+                "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/04ea3f1f-f5a9-4eca-b051-487ebeb4c97f"
+            },
+            "metadata": {
+                "domain": {
+                    "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+                    "name": "Global"
+                },
+                "ipType": "V_4",
+                "lastUser": {
+                    "name": "apiuser"
+                },
+                "parentType": "NetworkAddress",
+                "readOnly": {
+                    "reason": "SYSTEM",
+                    "state": true
+                },
+                "timestamp": 1484674980213
+            },
+            "name": "IPv6-to-IPv4-Relay-Anycast",
+            "overridable": false,
+            "type": "Network",
+            "value": "192.88.99.0/24"
+        }
+    ],
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks?offset=0&limit=12&expanded=true"
+    },
+    "paging": {
+        "count": 12,
+        "limit": 12,
+        "offset": 0,
+        "pages": 1
+    }
+}
+[03/28/2018 10:18:45 PM-DEBUG]: OrderedDict([(u'any', u'69fa2a3a-4487-4e3c-816f-4098f684826e'), (u'any-ipv4', u'cb7116e8-66a6-480b-8f9b-295191a0940a'), (u'IPv4-Benchmark-Tests', u'86caab8a-9bdd-420d-858b-5690fde8ce58'), (u'IPv4-Link-Local', u'f0ce41ae-6ee9-4e00-8762-da9370c4fee5'), (u'IPv4-Multicast', u'5622db1c-5cd5-4199-a4c8-d8f86dec3bd4'), (u'IPv4-Private-10.0.0.0-8', u'95916354-5aa1-4057-8eea-b42a5a207abc'), (u'IPv4-Private-172.16.0.0-12', u'b7a78a7d-20c5-47b2-b02f-86b4360112ac'), (u'IPv4-Private-192.168.0.0-16', u'1dcefdd8-07f7-438a-9221-97d63710614e'), (u'IPv6-IPv4-Mapped', u'1047b91f-db3a-45b8-9c10-f48ed3f0c3d6'), (u'IPv6-Link-Local', u'192c14f2-39d9-409d-81e9-357793bdf1ec'), (u'IPv6-Private-Unique-Local-Addresses', u'0434674f-87f8-4e17-810e-97100407858b'), (u'IPv6-to-IPv4-Relay-Anycast', u'04ea3f1f-f5a9-4eca-b051-487ebeb4c97f')])
+[03/28/2018 10:18:45 PM-INFO]: Building Objects Table for ranges objects
+[03/28/2018 10:18:45 PM-DEBUG]: GET data: None
+[03/28/2018 10:18:45 PM-DEBUG]: Requesting GET for https://fmc.example.com/api/fmc_config/v1/domain/default/object/ranges?expanded=true
+[03/28/2018 10:18:45 PM-DEBUG]: https://fmc.example.com:443 "GET /api/fmc_config/v1/domain/default/object/ranges?expanded=true HTTP/1.1" 200 64
+[03/28/2018 10:18:45 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:45 PM-DEBUG]: {
+    "links": {},
+    "paging": {
+        "count": 0,
+        "limit": 0,
+        "offset": 0,
+        "pages": 0
+    }
+}
+[03/28/2018 10:18:45 PM-INFO]: Building Objects Table for networkgroups objects
+[03/28/2018 10:18:45 PM-DEBUG]: GET data: None
+[03/28/2018 10:18:45 PM-DEBUG]: Requesting GET for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups?expanded=true
+[03/28/2018 10:18:46 PM-DEBUG]: https://fmc.example.com:443 "GET /api/fmc_config/v1/domain/default/object/networkgroups?expanded=true HTTP/1.1" 200 454
+[03/28/2018 10:18:46 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:46 PM-DEBUG]: {
+    "items": [
+        {
+            "description": " ",
+            "id": "15b12b14-dace-4117-b9d9-a9a7dcfa356f",
+            "links": {
+                "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/15b12b14-dace-4117-b9d9-a9a7dcfa356f"
+            },
+            "literals": [
+                {
+                    "type": "Network",
+                    "value": "10.0.0.0/8"
+                },
+                {
+                    "type": "Network",
+                    "value": "172.16.0.0/12"
+                },
+                {
+                    "type": "Network",
+                    "value": "192.168.0.0/16"
+                }
+            ],
+            "metadata": {
+                "domain": {
+                    "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+                    "name": "Global"
+                },
+                "lastUser": {
+                    "name": "apiuser"
+                },
+                "readOnly": {
+                    "reason": "SYSTEM",
+                    "state": true
+                },
+                "timestamp": 1484674980160
+            },
+            "name": "IPv4-Private-All-RFC1918",
+            "overridable": false,
+            "type": "NetworkGroup"
+        }
+    ],
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups?offset=0&limit=1&expanded=true"
+    },
+    "paging": {
+        "count": 1,
+        "limit": 1,
+        "offset": 0,
+        "pages": 1
+    }
+}
+[03/28/2018 10:18:46 PM-DEBUG]: OrderedDict([(u'IPv4-Private-All-RFC1918', u'15b12b14-dace-4117-b9d9-a9a7dcfa356f')])
+[03/28/2018 10:18:46 PM-INFO]: CREATING OBJECTS
+[03/28/2018 10:18:46 PM-WARNING]: Creating new hosts object: TEST.HOST.OBJECT!
+[03/28/2018 10:18:46 PM-DEBUG]: POST data: {"type": "Host", "overridable": true, "description": "Testing Python API | Chetan", "value": "8.8.8.8", "name": "TEST.HOST.OBJECT"}
+[03/28/2018 10:18:46 PM-DEBUG]: Requesting POST for https://fmc.example.com/api/fmc_config/v1/domain/default/object/hosts
+[03/28/2018 10:18:46 PM-DEBUG]: https://fmc.example.com:443 "POST /api/fmc_config/v1/domain/default/object/hosts HTTP/1.1" 201 835
+[03/28/2018 10:18:46 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:46 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064771960",
+    "links": {
+        "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/hosts/0027E388-EFA6-0ed3-0000-030064771960"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "ipType": "V_4",
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "parentType": "NetworkAddress",
+        "timestamp": 0
+    },
+    "name": "TEST.HOST.OBJECT",
+    "overridable": true,
+    "type": "Host",
+    "value": "8.8.8.8"
+}
+[03/28/2018 10:18:46 PM-WARNING]: Creating new ranges object: TEST.RANGE.OBJECT!
+[03/28/2018 10:18:46 PM-DEBUG]: POST data: {"type": "Range", "overridable": true, "description": "Testing Python API | Chetan", "value": "8.8.8.8-8.8.8.10", "name": "TEST.RANGE.OBJECT"}
+[03/28/2018 10:18:46 PM-DEBUG]: Requesting POST for https://fmc.example.com/api/fmc_config/v1/domain/default/object/ranges
+[03/28/2018 10:18:46 PM-DEBUG]: https://fmc.example.com:443 "POST /api/fmc_config/v1/domain/default/object/ranges HTTP/1.1" 201 848
+[03/28/2018 10:18:46 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:46 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064771978",
+    "links": {
+        "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/ranges/0027E388-EFA6-0ed3-0000-030064771978"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "ipType": "V_4",
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "parentType": "NetworkAddress",
+        "timestamp": 0
+    },
+    "name": "TEST.RANGE.OBJECT",
+    "overridable": true,
+    "type": "Range",
+    "value": "8.8.8.8-8.8.8.10"
+}
+[03/28/2018 10:18:46 PM-WARNING]: Creating new networks object: TEST.NETWORK.OBJECT!
+[03/28/2018 10:18:46 PM-DEBUG]: POST data: {"type": "Network", "overridable": true, "description": "Testing Python API | Chetan", "value": "8.8.8.0/24", "name": "TEST.NETWORK.OBJECT"}
+[03/28/2018 10:18:46 PM-DEBUG]: Requesting POST for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks
+[03/28/2018 10:18:47 PM-DEBUG]: https://fmc.example.com:443 "POST /api/fmc_config/v1/domain/default/object/networks HTTP/1.1" 201 850
+[03/28/2018 10:18:47 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:47 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064771996",
+    "links": {
+        "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/0027E388-EFA6-0ed3-0000-030064771996"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "ipType": "V_4",
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "parentType": "NetworkAddress",
+        "timestamp": 0
+    },
+    "name": "TEST.NETWORK.OBJECT",
+    "overridable": true,
+    "type": "Network",
+    "value": "8.8.8.0/24"
+}
+[03/28/2018 10:18:47 PM-WARNING]: Creating new networkgroups object: TEST.CHGROUP.OBJECT!
+[03/28/2018 10:18:47 PM-DEBUG]: POST data: {"description": "Testing Python API | Chetan", "name": "TEST.CHGROUP.OBJECT", "overridable": true, "type": "NetworkGroup", "literals": [{"type": "Network", "value": "8.8.8.0/24"}]}
+[03/28/2018 10:18:47 PM-DEBUG]: Requesting POST for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups
+[03/28/2018 10:18:49 PM-DEBUG]: https://fmc.example.com:443 "POST /api/fmc_config/v1/domain/default/object/networkgroups HTTP/1.1" 201 638
+[03/28/2018 10:18:49 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:49 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064772014",
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772014"
+    },
+    "literals": [
+        {
+            "type": "Network",
+            "value": "8.8.8.0/24"
+        }
+    ],
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "timestamp": 0
+    },
+    "name": "TEST.CHGROUP.OBJECT",
+    "overridable": true,
+    "type": "NetworkGroup"
+}
+[03/28/2018 10:18:49 PM-WARNING]: Creating new networkgroups object: TEST.GROUP.OBJECT!
+[03/28/2018 10:18:49 PM-DEBUG]: POST data: {"type": "NetworkGroup", "overridable": true, "description": "Testing Python API | Chetan", "name": "TEST.GROUP.OBJECT"}
+[03/28/2018 10:18:49 PM-DEBUG]: Requesting POST for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups
+[03/28/2018 10:18:49 PM-DEBUG]: https://fmc.example.com:443 "POST /api/fmc_config/v1/domain/default/object/networkgroups HTTP/1.1" 201 583
+[03/28/2018 10:18:49 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:49 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064772032",
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "timestamp": 0
+    },
+    "name": "TEST.GROUP.OBJECT",
+    "overridable": true,
+    "type": "NetworkGroup"
+}
+[03/28/2018 10:18:49 PM-INFO]: Child method: Add child object to Parent
+[03/28/2018 10:18:49 PM-DEBUG]: GET data: None
+[03/28/2018 10:18:49 PM-DEBUG]: Requesting GET for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032
+[03/28/2018 10:18:50 PM-DEBUG]: https://fmc.example.com:443 "GET /api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032 HTTP/1.1" 200 331
+[03/28/2018 10:18:50 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:50 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064772032",
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "timestamp": 1522289929633
+    },
+    "name": "TEST.GROUP.OBJECT",
+    "overridable": true,
+    "type": "NetworkGroup"
+}
+[03/28/2018 10:18:50 PM-WARNING]: Adding networkgroups object TEST.CHGROUP.OBJECT as a child to parent TEST.GROUP.OBJECT!
+[03/28/2018 10:18:50 PM-WARNING]: Updating networkgroups object TEST.GROUP.OBJECT!
+[03/28/2018 10:18:50 PM-DEBUG]: PUT data: {"objects": [{"type": "NetworkGroup", "overridable": true, "id": "0027E388-EFA6-0ed3-0000-030064772014", "name": "TEST.CHGROUP.OBJECT"}], "name": "TEST.GROUP.OBJECT", "overridable": true, "type": "NetworkGroup", "id": "0027E388-EFA6-0ed3-0000-030064772032", "description": "Testing Python API | Chetan"}
+[03/28/2018 10:18:50 PM-DEBUG]: Requesting PUT for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032
+[03/28/2018 10:18:51 PM-DEBUG]: https://fmc.example.com:443 "PUT /api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032 HTTP/1.1" 200 346
+[03/28/2018 10:18:51 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:51 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064772032",
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "timestamp": 0
+    },
+    "name": "TEST.GROUP.OBJECT",
+    "objects": [
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064772014",
+            "name": "TEST.CHGROUP.OBJECT",
+            "type": "NetworkGroup"
+        }
+    ],
+    "overridable": true,
+    "type": "NetworkGroup"
+}
+[03/28/2018 10:18:51 PM-INFO]: Child method: Add child object to Parent
+[03/28/2018 10:18:51 PM-DEBUG]: GET data: None
+[03/28/2018 10:18:51 PM-DEBUG]: Requesting GET for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032
+[03/28/2018 10:18:51 PM-DEBUG]: https://fmc.example.com:443 "GET /api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032 HTTP/1.1" 200 356
+[03/28/2018 10:18:51 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:51 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064772032",
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "timestamp": 1522289930253
+    },
+    "name": "TEST.GROUP.OBJECT",
+    "objects": [
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064772014",
+            "name": "TEST.CHGROUP.OBJECT",
+            "type": "NetworkGroup"
+        }
+    ],
+    "overridable": true,
+    "type": "NetworkGroup"
+}
+[03/28/2018 10:18:51 PM-WARNING]: Adding hosts object TEST.HOST.OBJECT as a child to parent TEST.GROUP.OBJECT!
+[03/28/2018 10:18:51 PM-WARNING]: Updating networkgroups object TEST.GROUP.OBJECT!
+[03/28/2018 10:18:51 PM-DEBUG]: PUT data: {"description": "Testing Python API | Chetan", "overridable": true, "objects": [{"type": "NetworkGroup", "name": "TEST.CHGROUP.OBJECT", "id": "0027E388-EFA6-0ed3-0000-030064772014"}, {"type": "Host", "overridable": true, "id": "0027E388-EFA6-0ed3-0000-030064771960", "name": "TEST.HOST.OBJECT"}], "type": "NetworkGroup", "id": "0027E388-EFA6-0ed3-0000-030064772032", "name": "TEST.GROUP.OBJECT"}
+[03/28/2018 10:18:51 PM-DEBUG]: Requesting PUT for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032
+[03/28/2018 10:18:53 PM-DEBUG]: https://fmc.example.com:443 "PUT /api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032 HTTP/1.1" 200 366
+[03/28/2018 10:18:53 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:53 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064772032",
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "timestamp": 0
+    },
+    "name": "TEST.GROUP.OBJECT",
+    "objects": [
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064772014",
+            "name": "TEST.CHGROUP.OBJECT",
+            "type": "NetworkGroup"
+        },
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064771960",
+            "name": "TEST.HOST.OBJECT",
+            "type": "Host"
+        }
+    ],
+    "overridable": true,
+    "type": "NetworkGroup"
+}
+[03/28/2018 10:18:53 PM-INFO]: Parent method: Add multiple children objects to Parent
+[03/28/2018 10:18:53 PM-DEBUG]: GET data: None
+[03/28/2018 10:18:53 PM-DEBUG]: Requesting GET for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032
+[03/28/2018 10:18:53 PM-DEBUG]: https://fmc.example.com:443 "GET /api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032 HTTP/1.1" 200 375
+[03/28/2018 10:18:53 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:53 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064772032",
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "timestamp": 1522289932000
+    },
+    "name": "TEST.GROUP.OBJECT",
+    "objects": [
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064772014",
+            "name": "TEST.CHGROUP.OBJECT",
+            "type": "NetworkGroup"
+        },
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064771960",
+            "name": "TEST.HOST.OBJECT",
+            "type": "Host"
+        }
+    ],
+    "overridable": true,
+    "type": "NetworkGroup"
+}
+[03/28/2018 10:18:53 PM-DEBUG]: GET data: None
+[03/28/2018 10:18:53 PM-DEBUG]: Requesting GET for https://fmc.example.com/api/fmc_config/v1/domain/default/object/ranges/0027E388-EFA6-0ed3-0000-030064771978
+[03/28/2018 10:18:53 PM-DEBUG]: https://fmc.example.com:443 "GET /api/fmc_config/v1/domain/default/object/ranges/0027E388-EFA6-0ed3-0000-030064771978 HTTP/1.1" 200 380
+[03/28/2018 10:18:53 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:53 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064771978",
+    "links": {
+        "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/ranges/0027E388-EFA6-0ed3-0000-030064771978"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "ipType": "V_4",
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "parentType": "NetworkAddress",
+        "timestamp": 1522289926650
+    },
+    "name": "TEST.RANGE.OBJECT",
+    "overridable": true,
+    "type": "Range",
+    "value": "8.8.8.8-8.8.8.10"
+}
+[03/28/2018 10:18:53 PM-WARNING]: Adding Range object TEST.RANGE.OBJECT as a child to parent TEST.GROUP.OBJECT!
+[03/28/2018 10:18:53 PM-DEBUG]: GET data: None
+[03/28/2018 10:18:53 PM-DEBUG]: Requesting GET for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/0027E388-EFA6-0ed3-0000-030064771996
+[03/28/2018 10:18:54 PM-DEBUG]: https://fmc.example.com:443 "GET /api/fmc_config/v1/domain/default/object/networks/0027E388-EFA6-0ed3-0000-030064771996 HTTP/1.1" 200 372
+[03/28/2018 10:18:54 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:54 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064771996",
+    "links": {
+        "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/0027E388-EFA6-0ed3-0000-030064771996"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "ipType": "V_4",
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "parentType": "NetworkAddress",
+        "timestamp": 1522289927066
+    },
+    "name": "TEST.NETWORK.OBJECT",
+    "overridable": true,
+    "type": "Network",
+    "value": "8.8.8.0/24"
+}
+[03/28/2018 10:18:54 PM-WARNING]: Adding Network object TEST.NETWORK.OBJECT as a child to parent TEST.GROUP.OBJECT!
+[03/28/2018 10:18:54 PM-WARNING]: Updating networkgroups object TEST.GROUP.OBJECT!
+[03/28/2018 10:18:54 PM-DEBUG]: PUT data: {"description": "Testing Python API | Chetan", "overridable": true, "objects": [{"type": "NetworkGroup", "name": "TEST.CHGROUP.OBJECT", "id": "0027E388-EFA6-0ed3-0000-030064772014"}, {"type": "Host", "name": "TEST.HOST.OBJECT", "id": "0027E388-EFA6-0ed3-0000-030064771960"}, {"type": "Range", "overridable": true, "id": "0027E388-EFA6-0ed3-0000-030064771978", "name": "TEST.RANGE.OBJECT"}, {"type": "Network", "overridable": true, "id": "0027E388-EFA6-0ed3-0000-030064771996", "name": "TEST.NETWORK.OBJECT"}], "type": "NetworkGroup", "id": "0027E388-EFA6-0ed3-0000-030064772032", "name": "TEST.GROUP.OBJECT"}
+[03/28/2018 10:18:54 PM-DEBUG]: Requesting PUT for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032
+[03/28/2018 10:18:54 PM-DEBUG]: https://fmc.example.com:443 "PUT /api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032 HTTP/1.1" 200 400
+[03/28/2018 10:18:54 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:54 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064772032",
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "timestamp": 0
+    },
+    "name": "TEST.GROUP.OBJECT",
+    "objects": [
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064772014",
+            "name": "TEST.CHGROUP.OBJECT",
+            "type": "NetworkGroup"
+        },
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064771960",
+            "name": "TEST.HOST.OBJECT",
+            "type": "Host"
+        },
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064771978",
+            "name": "TEST.RANGE.OBJECT",
+            "type": "Range"
+        },
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064771996",
+            "name": "TEST.NETWORK.OBJECT",
+            "type": "Network"
+        }
+    ],
+    "overridable": true,
+    "type": "NetworkGroup"
+}
+[03/28/2018 10:18:54 PM-INFO]: Rename Object
+[03/28/2018 10:18:54 PM-WARNING]: Renaming ranges object TEST.RANGE.OBJECT: TEST.RENAME.OBJECT!
+[03/28/2018 10:18:54 PM-WARNING]: Updating ranges object TEST.RANGE.OBJECT!
+[03/28/2018 10:18:54 PM-DEBUG]: PUT data: {"name": "TEST.RENAME.OBJECT", "overridable": true, "value": "8.8.8.8-8.8.8.10", "type": "Range", "id": "0027E388-EFA6-0ed3-0000-030064771978", "description": "Testing Python API | Chetan"}
+[03/28/2018 10:18:54 PM-DEBUG]: Requesting PUT for https://fmc.example.com/api/fmc_config/v1/domain/default/object/ranges/0027E388-EFA6-0ed3-0000-030064771978
+[03/28/2018 10:18:55 PM-DEBUG]: https://fmc.example.com:443 "PUT /api/fmc_config/v1/domain/default/object/ranges/0027E388-EFA6-0ed3-0000-030064771978 HTTP/1.1" 200 368
+[03/28/2018 10:18:55 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:55 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064771978",
+    "links": {
+        "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/ranges/0027E388-EFA6-0ed3-0000-030064771978"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "ipType": "V_4",
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "parentType": "NetworkAddress",
+        "timestamp": 0
+    },
+    "name": "TEST.RENAME.OBJECT",
+    "overridable": true,
+    "type": "Range",
+    "value": "8.8.8.8-8.8.8.10"
+}
+[03/28/2018 10:18:55 PM-INFO]: Child method: Remove child object from Parent
+[03/28/2018 10:18:55 PM-DEBUG]: GET data: None
+[03/28/2018 10:18:55 PM-DEBUG]: Requesting GET for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032
+[03/28/2018 10:18:55 PM-DEBUG]: https://fmc.example.com:443 "GET /api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032 HTTP/1.1" 200 412
+[03/28/2018 10:18:55 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:55 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064772032",
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "timestamp": 1522289934196
+    },
+    "name": "TEST.GROUP.OBJECT",
+    "objects": [
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064772014",
+            "name": "TEST.CHGROUP.OBJECT",
+            "type": "NetworkGroup"
+        },
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064771960",
+            "name": "TEST.HOST.OBJECT",
+            "type": "Host"
+        },
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064771978",
+            "name": "TEST.RENAME.OBJECT",
+            "type": "Range"
+        },
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064771996",
+            "name": "TEST.NETWORK.OBJECT",
+            "type": "Network"
+        }
+    ],
+    "overridable": true,
+    "type": "NetworkGroup"
+}
+[03/28/2018 10:18:55 PM-WARNING]: Removing networks child object TEST.NETWORK.OBJECT from parent TEST.GROUP.OBJECT!
+[03/28/2018 10:18:55 PM-WARNING]: Updating networkgroups object TEST.GROUP.OBJECT!
+[03/28/2018 10:18:55 PM-DEBUG]: PUT data: {"description": "Testing Python API | Chetan", "overridable": true, "objects": [{"type": "NetworkGroup", "name": "TEST.CHGROUP.OBJECT", "id": "0027E388-EFA6-0ed3-0000-030064772014"}, {"type": "Host", "name": "TEST.HOST.OBJECT", "id": "0027E388-EFA6-0ed3-0000-030064771960"}, {"type": "Range", "name": "TEST.RENAME.OBJECT", "id": "0027E388-EFA6-0ed3-0000-030064771978"}], "type": "NetworkGroup", "id": "0027E388-EFA6-0ed3-0000-030064772032", "name": "TEST.GROUP.OBJECT"}
+[03/28/2018 10:18:55 PM-DEBUG]: Requesting PUT for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032
+[03/28/2018 10:18:56 PM-DEBUG]: https://fmc.example.com:443 "PUT /api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032 HTTP/1.1" 200 384
+[03/28/2018 10:18:56 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:56 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064772032",
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "timestamp": 0
+    },
+    "name": "TEST.GROUP.OBJECT",
+    "objects": [
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064772014",
+            "name": "TEST.CHGROUP.OBJECT",
+            "type": "NetworkGroup"
+        },
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064771960",
+            "name": "TEST.HOST.OBJECT",
+            "type": "Host"
+        },
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064771978",
+            "name": "TEST.RENAME.OBJECT",
+            "type": "Range"
+        }
+    ],
+    "overridable": true,
+    "type": "NetworkGroup"
+}
+[03/28/2018 10:18:56 PM-INFO]: Parent method: Remove child object
+[03/28/2018 10:18:56 PM-DEBUG]: GET data: None
+[03/28/2018 10:18:56 PM-DEBUG]: Requesting GET for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032
+[03/28/2018 10:18:57 PM-DEBUG]: https://fmc.example.com:443 "GET /api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032 HTTP/1.1" 200 393
+[03/28/2018 10:18:57 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:57 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064772032",
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "timestamp": 1522289935833
+    },
+    "name": "TEST.GROUP.OBJECT",
+    "objects": [
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064772014",
+            "name": "TEST.CHGROUP.OBJECT",
+            "type": "NetworkGroup"
+        },
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064771960",
+            "name": "TEST.HOST.OBJECT",
+            "type": "Host"
+        },
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064771978",
+            "name": "TEST.RENAME.OBJECT",
+            "type": "Range"
+        }
+    ],
+    "overridable": true,
+    "type": "NetworkGroup"
+}
+[03/28/2018 10:18:57 PM-WARNING]: Removing Range child object TEST.RENAME.OBJECT from parent TEST.GROUP.OBJECT!
+[03/28/2018 10:18:57 PM-WARNING]: Updating networkgroups object TEST.GROUP.OBJECT!
+[03/28/2018 10:18:57 PM-DEBUG]: PUT data: {"description": "Testing Python API | Chetan", "overridable": true, "objects": [{"type": "NetworkGroup", "name": "TEST.CHGROUP.OBJECT", "id": "0027E388-EFA6-0ed3-0000-030064772014"}, {"type": "Host", "name": "TEST.HOST.OBJECT", "id": "0027E388-EFA6-0ed3-0000-030064771960"}], "type": "NetworkGroup", "id": "0027E388-EFA6-0ed3-0000-030064772032", "name": "TEST.GROUP.OBJECT"}
+[03/28/2018 10:18:57 PM-DEBUG]: Requesting PUT for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032
+[03/28/2018 10:18:57 PM-DEBUG]: https://fmc.example.com:443 "PUT /api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032 HTTP/1.1" 200 366
+[03/28/2018 10:18:57 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:57 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064772032",
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "timestamp": 0
+    },
+    "name": "TEST.GROUP.OBJECT",
+    "objects": [
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064772014",
+            "name": "TEST.CHGROUP.OBJECT",
+            "type": "NetworkGroup"
+        },
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064771960",
+            "name": "TEST.HOST.OBJECT",
+            "type": "Host"
+        }
+    ],
+    "overridable": true,
+    "type": "NetworkGroup"
+}
+[03/28/2018 10:18:57 PM-INFO]: Test script clean up
+[03/28/2018 10:18:57 PM-WARNING]: Deleting networks object: TEST.NETWORK.OBJECT!
+[03/28/2018 10:18:57 PM-DEBUG]: DELETE data: None
+[03/28/2018 10:18:57 PM-DEBUG]: Requesting DELETE for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/0027E388-EFA6-0ed3-0000-030064771996
+[03/28/2018 10:18:59 PM-DEBUG]: https://fmc.example.com:443 "DELETE /api/fmc_config/v1/domain/default/object/networks/0027E388-EFA6-0ed3-0000-030064771996 HTTP/1.1" 200 372
+[03/28/2018 10:18:59 PM-DEBUG]: JSON Response
+[03/28/2018 10:18:59 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064771996",
+    "links": {
+        "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networks/0027E388-EFA6-0ed3-0000-030064771996"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "ipType": "V_4",
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "parentType": "NetworkAddress",
+        "timestamp": 1522289927066
+    },
+    "name": "TEST.NETWORK.OBJECT",
+    "overridable": true,
+    "type": "Network",
+    "value": "8.8.8.0/24"
+}
+[03/28/2018 10:18:59 PM-WARNING]: Deleting networkgroups object: TEST.GROUP.OBJECT!
+[03/28/2018 10:18:59 PM-DEBUG]: DELETE data: None
+[03/28/2018 10:18:59 PM-DEBUG]: Requesting DELETE for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032
+[03/28/2018 10:19:00 PM-DEBUG]: https://fmc.example.com:443 "DELETE /api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032 HTTP/1.1" 200 375
+[03/28/2018 10:19:00 PM-DEBUG]: JSON Response
+[03/28/2018 10:19:00 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064772032",
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772032"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "timestamp": 1522289937223
+    },
+    "name": "TEST.GROUP.OBJECT",
+    "objects": [
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064772014",
+            "name": "TEST.CHGROUP.OBJECT",
+            "type": "NetworkGroup"
+        },
+        {
+            "id": "0027E388-EFA6-0ed3-0000-030064771960",
+            "name": "TEST.HOST.OBJECT",
+            "type": "Host"
+        }
+    ],
+    "overridable": true,
+    "type": "NetworkGroup"
+}
+[03/28/2018 10:19:00 PM-WARNING]: Deleting ranges object: TEST.RENAME.OBJECT!
+[03/28/2018 10:19:00 PM-DEBUG]: DELETE data: None
+[03/28/2018 10:19:00 PM-DEBUG]: Requesting DELETE for https://fmc.example.com/api/fmc_config/v1/domain/default/object/ranges/0027E388-EFA6-0ed3-0000-030064771978
+[03/28/2018 10:19:01 PM-DEBUG]: https://fmc.example.com:443 "DELETE /api/fmc_config/v1/domain/default/object/ranges/0027E388-EFA6-0ed3-0000-030064771978 HTTP/1.1" 200 381
+[03/28/2018 10:19:01 PM-DEBUG]: JSON Response
+[03/28/2018 10:19:01 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064771978",
+    "links": {
+        "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/ranges/0027E388-EFA6-0ed3-0000-030064771978"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "ipType": "V_4",
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "parentType": "NetworkAddress",
+        "timestamp": 1522289934726
+    },
+    "name": "TEST.RENAME.OBJECT",
+    "overridable": true,
+    "type": "Range",
+    "value": "8.8.8.8-8.8.8.10"
+}
+[03/28/2018 10:19:01 PM-WARNING]: Deleting hosts object: TEST.HOST.OBJECT!
+[03/28/2018 10:19:01 PM-DEBUG]: DELETE data: None
+[03/28/2018 10:19:01 PM-DEBUG]: Requesting DELETE for https://fmc.example.com/api/fmc_config/v1/domain/default/object/hosts/0027E388-EFA6-0ed3-0000-030064771960
+[03/28/2018 10:19:03 PM-DEBUG]: https://fmc.example.com:443 "DELETE /api/fmc_config/v1/domain/default/object/hosts/0027E388-EFA6-0ed3-0000-030064771960 HTTP/1.1" 200 370
+[03/28/2018 10:19:03 PM-DEBUG]: JSON Response
+[03/28/2018 10:19:03 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064771960",
+    "links": {
+        "parent": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkaddresses",
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/hosts/0027E388-EFA6-0ed3-0000-030064771960"
+    },
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "ipType": "V_4",
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "parentType": "NetworkAddress",
+        "timestamp": 1522289926223
+    },
+    "name": "TEST.HOST.OBJECT",
+    "overridable": true,
+    "type": "Host",
+    "value": "8.8.8.8"
+}
+[03/28/2018 10:19:03 PM-WARNING]: Deleting networkgroups object: TEST.CHGROUP.OBJECT!
+[03/28/2018 10:19:03 PM-DEBUG]: DELETE data: None
+[03/28/2018 10:19:03 PM-DEBUG]: Requesting DELETE for https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772014
+[03/28/2018 10:19:05 PM-DEBUG]: https://fmc.example.com:443 "DELETE /api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772014 HTTP/1.1" 200 361
+[03/28/2018 10:19:05 PM-DEBUG]: JSON Response
+[03/28/2018 10:19:05 PM-DEBUG]: {
+    "description": "Testing Python API | Chetan",
+    "id": "0027E388-EFA6-0ed3-0000-030064772014",
+    "links": {
+        "self": "https://fmc.example.com/api/fmc_config/v1/domain/default/object/networkgroups/0027E388-EFA6-0ed3-0000-030064772014"
+    },
+    "literals": [
+        {
+            "type": "Network",
+            "value": "8.8.8.0/24"
+        }
+    ],
+    "metadata": {
+        "domain": {
+            "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+            "name": "Global"
+        },
+        "lastUser": {
+            "name": "apiuser"
+        },
+        "timestamp": 1522289927913
+    },
+    "name": "TEST.CHGROUP.OBJECT",
+    "overridable": true,
+    "type": "NetworkGroup"
+}
+[03/28/2018 10:19:05 PM-DEBUG]: POST data:
+[03/28/2018 10:19:05 PM-DEBUG]: Requesting POST for https://fmc.example.com/api/fmc_platform/v1/auth/revokeaccess
+[03/28/2018 10:19:05 PM-DEBUG]: https://fmc.example.com:443 "POST /api/fmc_platform/v1/auth/revokeaccess HTTP/1.1" 204 0
+[03/28/2018 10:19:05 PM-INFO]: https://fmc.example.com: Logout Successful!
+Done running...
+
+Process finished with exit code 0

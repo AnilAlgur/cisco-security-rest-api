@@ -2,6 +2,7 @@ import fmc # Firepower Management Center (FMC) 6.1 API
 import sys
 from collections import OrderedDict
 import logging
+import urllib3
 
 logger = logging.getLogger(__name__)
 
@@ -12,10 +13,11 @@ def main():
     logging.basicConfig(
         # filename='/path/to/python-fmc/output.txt',
         stream=sys.stdout,
-        level=logging.INFO,  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+        level=logging.DEBUG,  # DEBUG, INFO, WARNING, ERROR, CRITICAL
         # format="[%(levelname)8s]:  %(message)s",
         format='[%(asctime)s-%(levelname)s]: %(message)s',
         datefmt='%m/%d/%Y %I:%M:%S %p')
+    urllib3.disable_warnings()
 
     # Get server, username and password from CLI
     username = 'username'
@@ -34,8 +36,8 @@ def main():
             # ['hosts', 'networks', 'ranges', 'networkgroups']
             lab_fmc.obj_tables[obj_type].build()
 
-        for obj in lab_fmc.obj_tables['networkgroups']:  # Current list of objects in FMC
-            print(obj.name)
+        # for obj in lab_fmc.obj_tables['networkgroups']:  # Current list of objects in FMC
+        #     print(obj.name)
 
         test_host = {
             "description": "Testing Python API | Chetan",

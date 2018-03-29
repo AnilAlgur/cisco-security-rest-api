@@ -315,7 +315,7 @@ class FPObjectTable(FPResourceTable):
         for each item inside it.
 
         >>> for fp_object in fmc.FPObjectTable(FMC_object, 'hosts'):
-                print fp_object.type, fp_object.name, fp_object.id
+                print("fp_object.type, fp_object.name, fp_object.id")
 
         hosts hosts1_name hosts1_id
         hosts hosts2_name hosts2_id
@@ -334,7 +334,7 @@ class FPObjectTable(FPResourceTable):
         """
         # Fetch the first page. By default,
         # URL = url + '?offset=0&limit=25&expanded=false'
-        logger.info("Building names dictionary for {} {}s".format(self.type, self.resource))
+        logger.info("Building Objects Table for {} {}s".format(self.type, self.resource))
         _fmc = self.fmc
         url = _fmc.url + _fmc.API_PATH[self.resource] + self.type + '?expanded=true'
         while url:  # True at least first page
