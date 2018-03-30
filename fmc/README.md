@@ -46,8 +46,8 @@ __Parameters__
 - __url__: (optional) URL for the object, GET the object if provided.
 - __json__: (optional) Full object definition in `dict` format.
 - __data__: (optional) Data that will be accpeted by Cisco FMC to create object when POST method is used.
-- __obj: (optional) Another :class__: FPObject to duplicate. This is useful when migrating objects between
-different FMC servers.
+- __obj__: (optional) Another `FPObject` to duplicate. This is useful when migrating objects between different FMC
+servers.
 
 <h1 id="fmc.api.FPObject.update">update</h1>
 
