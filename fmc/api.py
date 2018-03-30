@@ -63,6 +63,7 @@ class FMCRestClient(RestClient, FMCClient, RestJSONHandler):
     RestClient extension for FMC with FMCClient adn RestJSONHandler.
 
     Method Resolution Order:
+    ```
     FMCRestClient
     RestClient
     FMCClient
@@ -70,6 +71,7 @@ class FMCRestClient(RestClient, FMCClient, RestJSONHandler):
     RestJSONHandler
     RestDataHandler
     object
+    ```
     """
     pass
 
@@ -78,6 +80,12 @@ class FMC(FMCRestClient):
     """
     This class must be used to interact with FMC. Other classes are available within same module to interact with FMC
     resources such as Policy Objects, Devices, Access Policies.
+
+    :param url: URL of the FMC server
+    :param username: Login username for FMC server. Ensure that appropriate user role and permissions are assigned
+    to perform all the intended tasks.
+    :param password: Login password for FMC server.
+
     """
     __v1_domain__ = '/api/fmc_config/v1/domain/default/'
     RESOURCE_TYPES = [
@@ -132,11 +140,6 @@ class FMC(FMCRestClient):
     def __init__(self, url=None, username=None, password=None):
         """
         Initialize `FMC` object with server `URL`, `username` and `password` parameters.
-
-        :param url: URL of the FMC server
-        :param username: Login username for FMC server. Ensure that appropriate user role and permissions are assigned
-        to perform all the intended tasks.
-        :param password: Login password for FMC server.
         """
         super(FMC, self).__init__(url=url, username=username, password=password)
         self.server_version = ''
@@ -162,6 +165,9 @@ class FMC(FMCRestClient):
         return resp
 
     def get_server_version(self):
+        """
+        GET FMC server version.
+        """
         url = self.url + '/api/fmc_platform/v1/info/serverversion'
         resp = self._req(url)
         if len(resp):
@@ -170,6 +176,10 @@ class FMC(FMCRestClient):
 
     # Manage Devices
     def get_device_list(self):
+        """
+        Get the list of devices managed by FMC.
+        :return:
+        """
         url = self.url + self.API_PATH['devices'] + 'devicerecords'
         resp = self._req(url)
         return resp
@@ -219,14 +229,14 @@ class FMC(FMCRestClient):
 
 # Generic Resource Table related class and methods
 class FPResourceTable(object):
-    def __init__(self, fmc, resource, type):
-        """
-        Abstract class for table of instances of FMC resource types. It can be extended to make it specialized for
-        specific resources, such as 'object', 'policy, 'devices, etc.
+    """
+    Abstract class for table of instances of FMC resource types. It can be extended to make it specialized for
+    specific resources, such as 'object', 'policy, 'devices, etc.
 
-        `OrderedDict` is used so that child first order can be maintained for policy objects that allow for nested
-        inheritance.
-        """
+    `OrderedDict` is used so that child first order can be maintained for policy objects that allow for nested
+    inheritance.
+    """
+    def __init__(self, fmc, resource, type):
         if resource not in fmc.RESOURCE_TYPES:
             raise FMCError("Resource type {} is not valid!".format(type))
             return
@@ -288,6 +298,19 @@ class FPObjectTable(FPResourceTable):
     In case of policy objects that allow for nested inheritance, such as network objects, table is built in child first
     order. This is achieved by using `OrderedDict` in `FPResourceTable`. This is very useful in data migration and
     cleanup especially between multiple FMCs and while executing test cases.
+
+    Example usage:
+
+    ```python
+    >>> host_objs = FPObjectTable(FMC_object, 'hosts')
+    >>> hosts_objs.type
+    hosts
+    >>> hosts_objs.names
+    {}
+    >>> hosts_objs.build()
+    >>> hosts_objs.names
+    {'host1_name': 'host1_id', 'host2_name': 'host2_id', ...}
+    ```
     """
     def __init__(self, fmc, type):
         """
@@ -296,16 +319,6 @@ class FPObjectTable(FPResourceTable):
         :param fmc: :class: `FMC` object
         :param type: FMC object type
         
-        Example usage:
-        
-        >>> host_objs = FPObjectTable(FMC_object, 'hosts')
-        >>> hosts_objs.type
-        hosts
-        >>> hosts_objs.names
-        {}
-        >>> hosts_objs.build()
-        >>> hosts_objs.names
-        {'host1_name': 'host1_id', 'host2_name': 'host2_id', ...}
         """
         super(self.__class__, self).__init__(fmc, 'object', type)
 
@@ -314,11 +327,13 @@ class FPObjectTable(FPResourceTable):
         Generator function for FPObjectTable. It yields FPObject for
         for each item inside it.
 
+        ```python
         >>> for fp_object in fmc.FPObjectTable(FMC_object, 'hosts'):
                 print("fp_object.type, fp_object.name, fp_object.id")
 
         hosts hosts1_name hosts1_id
         hosts hosts2_name hosts2_id
+        ```
         """
         for obj_json in super(self.__class__, self).__iter__():
             fp_obj = FPObject(self.fmc, self.type, json=obj_json)
@@ -430,26 +445,24 @@ class FPResource(object):
 
 class FPObject(FPResource):
     """
+    FMC Object Manager API
+
     Extends generic `FPResource` for Policy Object related methods. This class allows for extensive and flexible ways to
     perform CRUD operations on the policy objects and object inheritance as well.
+
+    :param fmc: FMC server object :class:`FMC` object.
+    :param type: (optional) Object type supported by Cisco FMC 6.1.0.
+    :param oid: (optional) Object ID, GET the object, if provided.
+    :param name: (optional) Object Name, GET the object, if provided.
+    :param url: (optional) URL for the object, GET the object if provided.
+    :param json: (optional) Full object definition in :class dict: format.
+    :param data: (optional) Data that will be accpeted by Cisco FMC to create object when POST method is used.
+    :param obj: (optional) Another :class: FPObject to duplicate. This is useful when migrating objects between
+    different FMC servers.
     """
     def __init__(
             self, fmc, type=None, oid=None, name=None,
             url=None, json=None, data=None, obj=None):
-        """
-        FMC Object Manager API
-        
-        :param fmc: FMC server object :class:`FMC` object.
-        :param type: (optional) Object type supported by Cisco FMC 6.1.0.
-        :param oid: (optional) Object ID, GET the object, if provided.
-        :param name: (optional) Object Name, GET the object, if provided.
-        :param url: (optional) URL for the object, GET the object if provided.
-        :param json: (optional) Full object definition in :class dict: format.
-        :param data: (optional) Data that will be accpeted by Cisco FMC
-            to create object when POST method is used.
-        :param obj: (optional) Another :class: FPObject to duplicate. 
-            This is useful when migrating objects between different FMC servers.
-        """
         if not (oid or url or data or obj or json or name):
             logger.fatal("Cannot get FPObject with empty parameters")
             return
