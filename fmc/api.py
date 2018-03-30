@@ -460,8 +460,8 @@ class FPObject(FPResource):
     url: (optional) URL for the object, GET the object if provided.
     json: (optional) Full object definition in `dict` format.
     data: (optional) Data that will be accpeted by Cisco FMC to create object when POST method is used.
-    obj: (optional) Another :class: FPObject to duplicate. This is useful when migrating objects between
-    different FMC servers.
+    obj: (optional) Another `FPObject` to duplicate. This is useful when migrating objects between different FMC
+    servers.
     """
     def __init__(
             self, fmc, type=None, oid=None, name=None,
