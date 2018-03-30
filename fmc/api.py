@@ -81,10 +81,11 @@ class FMC(FMCRestClient):
     This class must be used to interact with FMC. Other classes are available within same module to interact with FMC
     resources such as Policy Objects, Devices, Access Policies.
 
-    :param url: URL of the FMC server
-    :param username: Login username for FMC server. Ensure that appropriate user role and permissions are assigned
+    # Parameters
+    url: URL of the FMC server
+    username: Login username for FMC server. Ensure that appropriate user role and permissions are assigned
     to perform all the intended tasks.
-    :param password: Login password for FMC server.
+    password: Login password for FMC server.
 
     """
     __v1_domain__ = '/api/fmc_config/v1/domain/default/'
@@ -393,13 +394,14 @@ class FPResource(object):
         """
         FMC Generic Resource Manager API
 
-        :param fmc: FMC server object :class:`FMC` object.
-        :param resource: FMC Resource
-        :param type: Object type supported by Cisco FMC 6.1.0.
-        :param json: (optional) Full object definition in :class dict: format.
-        :param oid: (optional) Object ID, GET the object if provided.
-        :param url: (optional) URL for the object, GET the object if provided.
-        :param data: (optional) Data that will be accepted by Cisco FMC
+        # Parameters
+        fmc: FMC server object :class:`FMC` object.
+        resource: FMC Resource
+        type: Object type supported by Cisco FMC 6.1.0.
+        json: (optional) Full object definition in :class dict: format.
+        oid: (optional) Object ID, GET the object if provided.
+        url: (optional) URL for the object, GET the object if provided.
+        data: (optional) Data that will be accepted by Cisco FMC
             to create object when POST method is used.
         """
         if not (oid or url or data or json):
@@ -450,14 +452,15 @@ class FPObject(FPResource):
     Extends generic `FPResource` for Policy Object related methods. This class allows for extensive and flexible ways to
     perform CRUD operations on the policy objects and object inheritance as well.
 
-    :param fmc: FMC server object :class:`FMC` object.
-    :param type: (optional) Object type supported by Cisco FMC 6.1.0.
-    :param oid: (optional) Object ID, GET the object, if provided.
-    :param name: (optional) Object Name, GET the object, if provided.
-    :param url: (optional) URL for the object, GET the object if provided.
-    :param json: (optional) Full object definition in :class dict: format.
-    :param data: (optional) Data that will be accpeted by Cisco FMC to create object when POST method is used.
-    :param obj: (optional) Another :class: FPObject to duplicate. This is useful when migrating objects between
+    # Parameters
+    fmc: FMC server object `FMC` object.
+    type: (optional) Object type supported by Cisco FMC 6.1.0.
+    oid: (optional) Object ID, GET the object, if provided.
+    name: (optional) Object Name, GET the object, if provided.
+    url: (optional) URL for the object, GET the object if provided.
+    json: (optional) Full object definition in `dict` format.
+    data: (optional) Data that will be accpeted by Cisco FMC to create object when POST method is used.
+    obj: (optional) Another :class: FPObject to duplicate. This is useful when migrating objects between
     different FMC servers.
     """
     def __init__(
@@ -542,7 +545,9 @@ class FPObject(FPResource):
         """
         Update this object with new definition.
         
-        :param data: JSON data in dict() format for the new definition
+        # Parameters
+        data: JSON data in dict() format for the new definition
+
         :return: JSON data of the object
         """
         logging.warning(
@@ -570,7 +575,8 @@ class FPObject(FPResource):
         """
         Rename this object.
         
-        :param new_name: New object name
+        # Parameters
+        new_name: New object name
         """
         if not new_name:
             logging.error("Cannot rename to empty string!")
@@ -597,7 +603,9 @@ class FPObject(FPResource):
         """
         Fetch the child object from FMC. Used by 'add_children' method.
         
-        :param child_name: Name of the child object
+        # Parameters
+        child_name: Name of the child object
+
         :return: Child object in FPObject format
         """
         children_types = self.fmc.CHILD_OBJECT_TYPES[self.type]
@@ -618,7 +626,8 @@ class FPObject(FPResource):
         """
         Add any number of objects to this object as a parent.
         
-        :param children_names: Comma separated names of child objects
+        # Parameters
+        children_names: Comma separated names of child objects
         """
         self._update_json()
         put_data = self.json.copy()
@@ -644,7 +653,8 @@ class FPObject(FPResource):
         """
         Remove an existing child from this object as a parent.
         
-        :param child_name: Name of the child to remove
+        # Parameters
+        child_name: Name of the child to remove
         """
         self._update_json()
         put_data = self.json.copy()
@@ -678,7 +688,8 @@ class FPObject(FPResource):
         """
         Add this object inside another object as a child.
         
-        :param pname: Name of the parent object
+        # Parameters
+        pname: Name of the parent object
         """
         if not pname:
             logging.error("Cannot add to invalid parent {}".format(pname))
@@ -711,7 +722,8 @@ class FPObject(FPResource):
         """
         Remove this object from another parent object
         
-        :param pname: Name of the parent object
+        # Parameters
+        pname: Name of the parent object
         """
         if not pname:
             logging.error("Cannot add to invalid parent {}".format(pname))

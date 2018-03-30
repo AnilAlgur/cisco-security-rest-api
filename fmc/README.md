@@ -18,10 +18,12 @@ FMC(self, url=None, username=None, password=None)
 This class must be used to interact with FMC. Other classes are available within same module to interact with FMC
 resources such as Policy Objects, Devices, Access Policies.
 
-:param url: URL of the FMC server
-:param username: Login username for FMC server. Ensure that appropriate user role and permissions are assigned
+__Parameters__
+
+- __url__: URL of the FMC server
+- __username__: Login username for FMC server. Ensure that appropriate user role and permissions are assigned
 to perform all the intended tasks.
-:param password: Login password for FMC server.
+- __password__: Login password for FMC server.
 
 
 <h1 id="fmc.api.FPObject">FPObject</h1>
@@ -35,14 +37,16 @@ FMC Object Manager API
 Extends generic `FPResource` for Policy Object related methods. This class allows for extensive and flexible ways to
 perform CRUD operations on the policy objects and object inheritance as well.
 
-:param fmc: FMC server object :class:`FMC` object.
-:param type: (optional) Object type supported by Cisco FMC 6.1.0.
-:param oid: (optional) Object ID, GET the object, if provided.
-:param name: (optional) Object Name, GET the object, if provided.
-:param url: (optional) URL for the object, GET the object if provided.
-:param json: (optional) Full object definition in :class dict: format.
-:param data: (optional) Data that will be accpeted by Cisco FMC to create object when POST method is used.
-:param obj: (optional) Another :class: FPObject to duplicate. This is useful when migrating objects between
+__Parameters__
+
+- __fmc__: FMC server object `FMC` object.
+- __type__: (optional) Object type supported by Cisco FMC 6.1.0.
+- __oid__: (optional) Object ID, GET the object, if provided.
+- __name__: (optional) Object Name, GET the object, if provided.
+- __url__: (optional) URL for the object, GET the object if provided.
+- __json__: (optional) Full object definition in `dict` format.
+- __data__: (optional) Data that will be accpeted by Cisco FMC to create object when POST method is used.
+- __obj: (optional) Another :class__: FPObject to duplicate. This is useful when migrating objects between
 different FMC servers.
 
 <h1 id="fmc.api.FPObject.update">update</h1>
@@ -53,8 +57,11 @@ FPObject.update(self, data)
 
 Update this object with new definition.
 
-:param data: JSON data in dict() format for the new definition
-:return: JSON data of the object
+__Parameters__
+
+- __data__: JSON data in dict() format for the new definition
+
+- __:return__: JSON data of the object
 
 <h1 id="fmc.api.FPObject.rename">rename</h1>
 
@@ -64,7 +71,9 @@ FPObject.rename(self, new_name)
 
 Rename this object.
 
-:param new_name: New object name
+__Parameters__
+
+- __new_name__: New object name
 
 <h1 id="fmc.api.FPObject.delete">delete</h1>
 
@@ -88,7 +97,9 @@ FPObject.add_to_parent(self, pname)
 
 Add this object inside another object as a child.
 
-:param pname: Name of the parent object
+__Parameters__
+
+- __pname__: Name of the parent object
 
 <h1 id="fmc.api.FPObject.remove_from_parent">remove_from_parent</h1>
 
@@ -98,7 +109,9 @@ FPObject.remove_from_parent(self, pname)
 
 Remove this object from another parent object
 
-:param pname: Name of the parent object
+__Parameters__
+
+- __pname__: Name of the parent object
 
 <h1 id="fmc.api.FPObject.add_children">add_children</h1>
 
@@ -108,7 +121,9 @@ FPObject.add_children(self, *children_names)
 
 Add any number of objects to this object as a parent.
 
-:param children_names: Comma separated names of child objects
+__Parameters__
+
+- __children_names__: Comma separated names of child objects
 
 <h1 id="fmc.api.FPObject.remove_child">remove_child</h1>
 
@@ -118,7 +133,9 @@ FPObject.remove_child(self, child_name)
 
 Remove an existing child from this object as a parent.
 
-:param child_name: Name of the child to remove
+__Parameters__
+
+- __child_name__: Name of the child to remove
 
 <h1 id="fmc.api.FPObjectTable">FPObjectTable</h1>
 
