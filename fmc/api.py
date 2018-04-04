@@ -28,12 +28,16 @@ class FMCClient(AppClient):
         super(FMCClient, self).__init__(*args, **kwargs)
 
     def login(self, *args, **kwargs):
+        # Set basic HTTP authentication header
         base64str = base64.b64encode('{}:{}'.format(self.username, self.password))
         self.hdrs_auth["Authorization"] = "Basic {}".format(base64str)
+        # Set HTTP method for login
         self.login_method = 'POST'
+        # Call super!
         super(FMCClient, self).login(*args, **kwargs)
 
     def logout(self, *args, **kwargs):
+        # Set API URL for logout
         self.LOGOUT_URL = '/api/fmc_platform/' + self.API_VERSION + '/auth/revokeaccess'
 
     def _req(self, *args, **kwargs):

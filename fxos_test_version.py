@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 def main():
     """
-    Test FXOS Manager REST API.
+    Test FXOS REST API.
     """
     logging.basicConfig(
         # filename='/path/to/fxos/output.txt',

@@ -20,12 +20,16 @@ class FXOSClient(AppClient):
         super(FXOSClient, self).__init__(*args, **kwargs)
 
     def login(self, *args, **kwargs):
+        # Populate authentication headers
         self.hdrs_auth["USERNAME"] = self.username
         self.hdrs_auth["PASSWORD"] = self.password
+        # Set HTTP method for login
         self.login_method = 'POST'
+        # Call super!
         super(FXOSClient, self).login(*args, **kwargs)
 
     def logout(self, *args, **kwargs):
+        # Set API URL for logout
         self.LOGOUT_URL = '/api/logout'
 
     def _req(self, *args, **kwargs):

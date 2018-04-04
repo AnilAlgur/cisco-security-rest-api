@@ -40,7 +40,22 @@ class AppClient(object):
 
     `AUTH_HDR_FIELD`: Header field to be used in all the requests to the REST server after authentication is completed.
 
-    If required, other methods such as `login`, `logout` may also be overridden.
+    If required, other methods such as `login`, `logout` may also be overridden. e.g.
+
+    ```python
+    def login(self, *args, **kwargs):
+        # Populate authentication headers
+        self.hdrs_auth["USERNAME"] = self.username
+        self.hdrs_auth["PASSWORD"] = self.password
+        # Set HTTP method for login
+        self.login_method = 'POST'
+        # Call super!
+        super(ExampleAppClient, self).login(*args, **kwargs)
+
+    def logout(self, *args, **kwargs):
+        # Set API URL for logout
+        self.LOGOUT_URL = '/api/logout'
+    ```
 
     Check the application clients available in this repository to learn more about how `AppClient` can be extended for
     use with specific applications.
