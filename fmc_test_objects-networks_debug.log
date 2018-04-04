@@ -1,4 +1,4 @@
-C:\Python27\python.exe C:/Users/502339781/PycharmProjects/cisco-security-rest-api/fmc_test_objects-networks.py apiuser XXXXXXXX https://fmc.example.com
+C:\Python27\python.exe C:/Users/apiuser/PycharmProjects/cisco-security-rest-api/fmc_test_objects-networks.py apiuser XXXXXXXX https://fmc.example.com
 [03/28/2018 10:18:40 PM-DEBUG]: https://fmc.example.com/api/fmc_platform/v1/auth/generatetoken
 [03/28/2018 10:18:40 PM-DEBUG]: Starting new HTTPS connection (1): fmc.example.com
 [03/28/2018 10:18:44 PM-DEBUG]: https://fmc.example.com:443 "POST /api/fmc_platform/v1/auth/generatetoken HTTP/1.1" 204 0

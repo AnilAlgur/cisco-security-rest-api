@@ -5,6 +5,7 @@ This is a collection of modules that interact with REST API available in Cisco S
 * Cisco Security Manager (CSM) 4.12
 * Cisco Firepower Management Center (FMC) 6.1
 * Cisco Secure Access Control Server (ACS) 5.8
+* Cisco Firepower eXtensible Operating System (FXOS) 2.1
 
 ## Example Scripts:
 * `acs-demo.py`: Demo script for ACS REST API
@@ -16,6 +17,7 @@ This is a collection of modules that interact with REST API available in Cisco S
 * `fmc_test_objects-networks.py`: Test FMC Object Manager API
 * `fmc_workstation_nwog.py`: Create network objects in FMC as per information in CSV file.
 * `ise-demo.py`: Demo script for ISE REST API
+* `fxos_test_version.py`: Quick test to check FXOS software version.
 
 ## Requires
 * Python 2.7.x
