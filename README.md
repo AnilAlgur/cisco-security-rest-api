@@ -18,6 +18,7 @@ This is a collection of modules that interact with REST API available in Cisco S
 * `fmc_workstation_nwog.py`: Create network objects in FMC as per information in CSV file.
 * `ise-demo.py`: Demo script for ISE REST API
 * `fxos_test_version.py`: Quick test to check FXOS software version.
+* `asa_test_cli.py`: Quick test to check ASA software version and show command outputs.
 
 ## Requires
 * Python 2.7.x

@@ -15,7 +15,7 @@ from .api import FPPolicyTable
 from .api import FPDeviceTable
 
 __author__ = "Chetankumar Phulpagare"
-__copyright__ = "Copyright 2017, Cisco"
+__copyright__ = ""
 __credits__ = ["Chetankumar Phulpagare"]
-__email__ = "cphulpag@cisco.com"
+__email__ = "chetanph"
 __all__ = ['FMC', 'FPObject', 'FPObjectTable', 'FPDeviceTable', 'FPPolicyTable']

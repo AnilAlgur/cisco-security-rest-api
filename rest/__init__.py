@@ -8,7 +8,7 @@ from xml_handler import *
 from json_handler import *
 
 __author__ = "Chetankumar Phulpagare"
-__copyright__ = "Copyright 2017, Cisco"
+__copyright__ = ""
 __credits__ = ["Chetankumar Phulpagare"]
-__email__ = "cphulpag@cisco.com"
+__email__ = "chetanph"
 __all__ = ['RestClient', 'AppClient', 'RestClientError', 'RestDataHandler', 'RestXMLHandler', 'RestJSONHandler']
