@@ -51,11 +51,13 @@ RestClient._req(self, url, method='GET', data=None, **kwargs)
 RestClient Internal function. Submit request towards RSET API server, checks return status and parses return
 content.
 
-:param path: Path to append to URI
-:param method: REST API method, can be any of
-    'GET','POST','PUT','DELETE'
-:param data: Request data
-:return: Response from REST server
+__Parameters__
+
+- __path__: Path to append to server URL
+- __method__: REST API method, can be any of methods supported by application.
+- __data__: Request data
+
+- __return__: Response from REST server
 
 <h1 id="rest.RestClient.handle_response">handle_response</h1>
 

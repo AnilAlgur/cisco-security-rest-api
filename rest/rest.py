@@ -151,11 +151,12 @@ class RestClient(AppClient, RestDataHandler):
         RestClient Internal function. Submit request towards RSET API server, checks return status and parses return
         content.
 
-        :param path: Path to append to URI
-        :param method: REST API method, can be any of
-            'GET','POST','PUT','DELETE'
-        :param data: Request data
-        :return: Response from REST server
+        # Parameters
+        path: Path to append to server URL
+        method: REST API method, can be any of methods supported by application.
+        data: Request data
+
+        return: Response from REST server
         """
         if url is None:
             raise RestClientError("REST URL needs to be specified")
