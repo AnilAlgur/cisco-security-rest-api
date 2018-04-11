@@ -6,6 +6,7 @@ This is a collection of modules that interact with REST API available in Cisco S
 * Cisco Firepower Management Center (FMC) 6.1
 * Cisco Secure Access Control Server (ACS) 5.8
 * Cisco Firepower eXtensible Operating System (FXOS) 2.1
+* Cisco Adaptive Security Appliances (ASA) 9.6
 
 ## Example Scripts:
 * `acs-demo.py`: Demo script for ACS REST API
