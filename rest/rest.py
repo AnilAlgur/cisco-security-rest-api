@@ -83,16 +83,16 @@ class RestClient(AppClient, RestDataHandler):
 
     `RestClient` is designed to allow application specific extensions to focus more on application use-cases, be better
     readable and abstract out underlying REST specific function as much as possible.
+
+    Initialize `RestClient` with `URL`, `username` and `password` parameters.
+
+    # Parameters
+    url: URL of the REST API server
+    username: Login username for REST API server
+    password: Login password for REST API server
     """
 
     def __init__(self, url=None, username=None, password=None):
-        """
-        Initialize `RestClient` with `URL`, `username` and `password` parameters.
-
-        :param url: URL of the REST API server
-        :param username: Login username for REST API server
-        :param password: Login password for REST API server
-        """
         if url is None:
             logger.fatal("REST API Server URL needs to be specified")
             exit(1)
@@ -139,10 +139,11 @@ class RestClient(AppClient, RestDataHandler):
         session access to the server.
         """
         self.logout_data = 'LOGOUT'
+        self.logout_method = 'POST'
         super(RestClient, self).logout()
         if self.LOGOUT_URL:
             url = self.url + self.LOGOUT_URL
-            self._req(url, method='POST', data=self.logout_data)
+            self._req(url, method=self.logout_method, data=self.logout_data)
         logging.info("{}: Logout Successful!".format(self.url))
 
     def _req(self, url, method='GET', data=None, **kwargs):

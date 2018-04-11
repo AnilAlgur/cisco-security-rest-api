@@ -44,7 +44,7 @@ class RestXMLHandler(RestDataHandler):
             req_data = ''
         elif data is not None:
             req_type = kwargs.get('req_type')
-            etree_data = self._dict2xml(req_type, data)
+            etree_data = self._dict2xml(req_type, data, **kwargs)
             logger.debug("data: {}".format(etree.tostring(etree_data, pretty_print=True)))
             req_data = etree.tostring(etree_data)
         return req_data

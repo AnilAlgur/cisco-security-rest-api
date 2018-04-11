@@ -16,6 +16,55 @@ format. Appropriate `AppClient` and `RestDataHandler` must be provided for this 
 `RestClient` is designed to allow application specific extensions to focus more on application use-cases, be better
 readable and abstract out underlying REST specific function as much as possible.
 
+Initialize `RestClient` with `URL`, `username` and `password` parameters.
+
+__Parameters__
+
+- __url__: URL of the REST API server
+- __username__: Login username for REST API server
+- __password__: Login password for REST API server
+
+<h1 id="rest.RestClient.login">login</h1>
+
+```python
+RestClient.login(self, method='POST')
+```
+
+The login method authenticates a REST client attempting to access the services provided by the REST server.
+This method must be called prior to any other method called on other services.
+
+<h1 id="rest.RestClient.logout">logout</h1>
+
+```python
+RestClient.logout(self)
+```
+
+The logout method notifies the REST server that a previously authenticated REST client is no longer requiring
+session access to the server.
+
+<h1 id="rest.RestClient._req">_req</h1>
+
+```python
+RestClient._req(self, url, method='GET', data=None, **kwargs)
+```
+
+RestClient Internal function. Submit request towards RSET API server, checks return status and parses return
+content.
+
+:param path: Path to append to URI
+:param method: REST API method, can be any of
+    'GET','POST','PUT','DELETE'
+:param data: Request data
+:return: Response from REST server
+
+<h1 id="rest.RestClient.handle_response">handle_response</h1>
+
+```python
+RestClient.handle_response(self, resp)
+```
+
+Parse the response data. This is overridden by DataHandler class for content-type specific functions.
+
 <h1 id="rest.AppClient">AppClient</h1>
 
 ```python
